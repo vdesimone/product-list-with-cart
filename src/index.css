@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;600;700&display=swap');
+
+:root {
+  --red: hsl(14, 86%, 42%);
+  --green: hsl(159, 69%, 38%);
+  --rose50: hsl(20, 50%, 98%);
+  --rose100: hsl(13, 31%, 94%);
+  --rose300: hsl(14, 25%, 72%);
+  --rose400: hsl(7, 20%, 60%);
+  --rose500: hsl(12, 20%, 44%);
+  --rose900: hsl(14, 65%, 9%);
+
+  --font-regular: 400;
+  --font-semibold: 600;
+  --font-bold: 700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Red Hat Text", serif;
+}
+
+html {
+  font-size: 16px;
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--rose100);
+
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rose900);
+}
+
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  max-width: 1284px;
+  padding: 4rem 5rem;
+  display: flex;
+}
+
+.menu-container {
+  width: 100%;
+  max-width: 56.25rem;
+}
+.menu-container h1 {
+  margin-bottom: 1rem;
+}
+.menu-items {
+  display: grid;
+  max-width: 12.5rem;
+}
+.menu-items .item {
+  position: relative;
+}
+.menu-items .item .menu-img {
+  max-width: 15rem;
+  aspect-ratio: 1 / 0.95;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+.menu-items .item button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  padding: 0.7rem;
+  position: absolute;
+  top: 14.25rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2rem;
+  border: 1px solid var(--rose500);
+  background-color: var(--rose50);
+  font-size: 0.875rem;
+  font-weight: var(--font-semibold);
+  color: var(--rose900);
+  gap: 0.4rem;
+}
+.menu-items .item .item-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.menu-items .item .item-desc .category {
+  font-size: 0.875rem;
+  color: var(--rose500);
+}
+.menu-items .item .item-desc .name {
+  font-size: 1rem;
+  font-weight: var(--font-semibold);
+}
+.menu-items .item .item-desc .price {
+  font-weight: var(--font-semibold);
+  color: var(--red);
+}
+
+.cart-container {
+  background-color: var(--rose50);
+  padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+  border-radius: 1rem;
+  min-width: 24rem;
+  height: fit-content;
+}
+.cart-container h2 {
+  margin-bottom: 1.5rem;
+  color: var(--red);
+  font-weight: var(--font-bold);
+}
+.cart-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.empty-cart-img {
+  margin-bottom: 1.5rem;
+}
+.empty-cart-text {
+  color: var(--rose400);
+  font-weight: var(--font-semibold);
+}
