@@ -74,7 +74,7 @@ body {
   margin-bottom: 2rem;
   object-fit: cover;
 }
-.menu-items .item button {
+.menu-items .item .initial-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,6 +91,53 @@ body {
   font-weight: var(--font-semibold);
   color: var(--rose900);
   gap: 0.4rem;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+.menu-items .item .initial-btn:hover {
+  color: var(--red);
+  border: 1px solid var(--red);
+}
+.menu-items .item .quantity-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  padding: 0.7rem 1rem;
+  position: absolute;
+  top: 14.25rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2rem;
+  border: none;
+  background-color: var(--red);
+  font-size: 0.875rem;
+  font-weight: var(--font-semibold);
+  color: var(--rose50);
+  gap: 0.4rem;
+}
+.menu-items .item .quantity-btn .decrement-icon,
+.menu-items .item .quantity-btn .increment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: none;
+  height: 1.25rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 2rem;
+  border: 1px solid var(--rose50);
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+.menu-items .item .quantity-btn .decrement-icon:hover,
+.menu-items .item .quantity-btn .increment-icon:hover {
+  border: none;
+  background-color: var(--rose50);
+
+  .decrement-icon-img,
+  .increment-icon-img {
+    filter: invert(24%) sepia(53%) saturate(3254%) hue-rotate(358deg) brightness(98%) contrast(101%);
+  }
 }
 .menu-items .item .item-desc {
   display: flex;
