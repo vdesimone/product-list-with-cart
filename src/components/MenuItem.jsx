@@ -4,50 +4,47 @@ import iconAddToCart from "../assets/images/icon-add-to-cart.svg";
 import iconDecrement from "../assets/images/icon-decrement-quantity.svg";
 import iconIncrement from "../assets/images/icon-increment-quantity.svg";
 
-function MenuItem({ item }) {
+function MenuItem({ item, updateItemQuantity }) {
 
-  const [itemCount, setItemCount] = useState(0);
+  const [itemCount, setItemCount] = useState(item.quantity);
 
   useEffect(() => {
-    setItemCount(item.quantity)
+    setItemCount(item.quantity);
   }, [item.quantity]);
 
-  const handleAddToCart = (item) => {
-    if (item && item.quantity == 0 && itemCount == 0) {
-      item.quantity += 1;
-      setItemCount(item.quantity);
+  const handleAddToCart = () => {
+    if (item.quantity === 0 && itemCount === 0) {
+      updateItemQuantity(item.index, 1);
     }
-  }
+  };
 
-  const handleIncrement = (item) => {
-   if (item.quantity <= 100 && itemCount <= 100) {
-    item.quantity += 1;
-    setItemCount(item.quantity);
+  const handleIncrement = () => {
+   if (item.quantity < 100) {
+    updateItemQuantity(item.index, item.quantity + 1);
    }
-  }
+  };
 
-  const handleDecrement = (item) => {
-    if (item.quantity >= 0 && itemCount >= 0) {
-      item.quantity -= 1;
-      setItemCount(item.quantity);
+  const handleDecrement = () => {
+    if (item.quantity > 0) {
+      updateItemQuantity(item.index, item.quantity - 1);
     }
-  }
+  };
 
   return (
     <div className="item">
       <img className="menu-img" loading="lazy" src={item.image.desktop} alt={item.name} />
-      {itemCount == 0 ? (
-        <button className="initial-btn" onClick={() => handleAddToCart(item)}>
+      {item.quantity === 0 ? (
+        <button className="initial-btn" onClick={handleAddToCart}>
           <img src={iconAddToCart} alt="Add to Cart Icon" />
           Add to Cart
         </button>
       ) : (
         <button className="quantity-btn">
-          <div className="decrement-icon" onClick={() => handleDecrement(item)}>
+          <div className="decrement-icon" onClick={handleDecrement}>
             <img className="decrement-icon-img" src={iconDecrement} alt="Decrement Icon" />
           </div>
           {item.quantity}
-          <div className="increment-icon" onClick={() => handleIncrement(item)}>
+          <div className="increment-icon" onClick={handleIncrement}>
             <img className="increment-icon-img" src={iconIncrement} alt="Increment Icon" />
           </div>
         </button>
@@ -63,6 +60,7 @@ function MenuItem({ item }) {
 
 MenuItem.propTypes = {
   item: PropTypes.object.isRequired,
+  updateItemQuantity: PropTypes.func.isRequired,
 };
 
 export default MenuItem;
