@@ -2,11 +2,12 @@
 
 :root {
   --red: hsl(14, 86%, 42%);
+  --dark-red: hsl(14, 86%, 32%);
   --green: hsl(159, 69%, 38%);
   --rose50: hsl(20, 50%, 98%);
   --rose100: hsl(13, 31%, 94%);
   --rose300: hsl(14, 25%, 72%);
-  --rose400: hsl(7, 20%, 60%);
+  --rose400: hsl(6, 20%, 60%);
   --rose500: hsl(12, 20%, 44%);
   --rose900: hsl(14, 65%, 9%);
 
@@ -54,7 +55,7 @@ body {
   width: 100%;
 }
 .menu-container h1 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.75rem;
 }
 .menu-items {
   display: grid;
@@ -129,6 +130,9 @@ body {
   cursor: pointer;
   transition: all 0.1s linear;
 }
+.decrement-icon-img, .increment-icon-img  {
+  user-select: none;
+}
 .menu-items .item .quantity-btn .decrement-icon:hover,
 .menu-items .item .quantity-btn .increment-icon:hover {
   border: none;
@@ -136,7 +140,7 @@ body {
 
   .decrement-icon-img,
   .increment-icon-img {
-    filter: invert(24%) sepia(53%) saturate(3254%) hue-rotate(358deg) brightness(98%) contrast(101%);
+    filter: brightness(0) saturate(100%) invert(24%) sepia(53%) saturate(3254%) hue-rotate(358deg) brightness(98%) contrast(101%);
   }
 }
 .menu-items .item .item-desc {
@@ -157,19 +161,26 @@ body {
   color: var(--red);
 }
 
-.cart-container {
+.cart-container,
+.cart-container-empty {
+  display: flex;
+  flex-direction: column;
   background-color: var(--rose50);
-  padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+  padding: 1.5rem;
   border-radius: 1rem;
-  min-width: 24rem;
+  min-width: 23rem;
   height: fit-content;
+  max-height: 100%;
+}
+.cart-container-empty{
+  padding: 1.5rem 1.5rem 2.5rem 1.5rem;
 }
 .cart-container h2 {
-  margin-bottom: 1.5rem;
   color: var(--red);
+  font-size: 1.5rem;
   font-weight: var(--font-bold);
 }
-.cart-contents {
+.empty-cart-contents {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -180,4 +191,108 @@ body {
 .empty-cart-text {
   color: var(--rose400);
   font-weight: var(--font-semibold);
+}
+.cart-contents {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-grow: 1;
+  max-height: 100%
+}
+.cart-contents .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--rose100);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.cart-contents .item .item-info h3 {
+  font-size: 0.875rem;
+  font-weight: var(--font-semibold);
+  margin-bottom: 0.5rem;
+}
+.cart-contents .item .item-info .item-details {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--rose400);
+}
+.cart-contents .item .item-info .item-details .item-quantity {
+  color: var(--red);
+  font-weight: var(--font-semibold);
+}
+.cart-contents .item .item-info .item-details .item-total-price {
+  font-weight: var(--font-semibold);
+}
+.cart-contents .item .remove-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: none;
+  height: 1.25rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 2rem;
+  border: 1px solid var(--rose300);
+  cursor: pointer;
+  transition: all 0.025s linear;
+}
+.cart-contents .item .remove-item img {
+  user-select: none;
+  filter: brightness(0) saturate(100%) invert(94%) sepia(10%) saturate(1491%) hue-rotate(303deg) brightness(86%) contrast(80%);
+}
+.cart-contents .item .remove-item:hover {
+  border: 1px solid var(--rose900);
+
+  .remove-item-icon {
+    filter: brightness(0) saturate(100%) invert(6%) sepia(16%) saturate(5398%) hue-rotate(345deg) brightness(92%) contrast(97%);
+  }
+}
+.cart-container .order-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+.cart-container .order-total p {
+  font-size: 0.875rem;
+}
+.cart-container .order-total h4 {
+  font-size: 1.5rem;
+}
+.cart-container .delivery-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: var(--rose100);
+  border-radius: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+.cart-container .delivery-info p {
+  font-size: 0.875rem;
+}
+.cart-container .delivery-info p span {
+  font-weight: var(--font-semibold);
+}
+.cart-container .confirm-order button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 2rem;
+  background-color: var(--red);
+  color: var(--rose50);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+.cart-container .confirm-order button:hover {
+  background-color: var(--dark-red);
 }
