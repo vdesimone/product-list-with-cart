@@ -6,6 +6,7 @@
   --green: hsl(159, 69%, 38%);
   --rose50: hsl(20, 50%, 98%);
   --rose100: hsl(13, 31%, 94%);
+  --rose200: hsl(13, 31%, 90%);
   --rose300: hsl(14, 25%, 72%);
   --rose400: hsl(7, 20%, 60%);
   --rose500: hsl(12, 20%, 44%);
@@ -47,6 +48,7 @@ body {
   width: 100vw;
   padding: 3.5rem 5rem;
   display: flex;
+  position: relative;
 }
 
 .menu-container {
@@ -74,6 +76,9 @@ body {
   border-radius: 0.5rem;
   margin-bottom: 2rem;
   object-fit: cover;
+}
+.menu-items .item .selected {
+  border: 2px solid var(--red);
 }
 .menu-items .item .initial-btn {
   display: flex;
@@ -171,8 +176,9 @@ body {
   min-width: 23rem;
   height: fit-content;
   max-height: 100%;
+  overflow-y: auto;
 }
-.cart-container-empty{
+.cart-container-empty {
   padding: 1.5rem 1.5rem 2.5rem 1.5rem;
 }
 .cart-container h2 {
@@ -197,7 +203,8 @@ body {
   flex-direction: column;
   overflow-y: auto;
   flex-grow: 1;
-  max-height: 100%
+  max-height: 100%;
+  min-height: 4.875rem;
 }
 .cart-contents .item {
   display: flex;
@@ -207,18 +214,21 @@ body {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-.cart-contents .item .item-info h3 {
+.cart-contents .item .item-info h3,
+.order-info .details-container .details h3 {
   font-size: 0.875rem;
   font-weight: var(--font-semibold);
   margin-bottom: 0.5rem;
 }
-.cart-contents .item .item-info .item-details {
+.cart-contents .item .item-info .item-details,
+.order-info .details-container .details .desc {
   display: flex;
   gap: 0.5rem;
   font-size: 0.875rem;
   color: var(--rose400);
 }
-.cart-contents .item .item-info .item-details .item-quantity {
+.cart-contents .item .item-info .item-details .item-quantity,
+.order-info .details-container .details .desc .quantity {
   color: var(--red);
   font-weight: var(--font-semibold);
 }
@@ -259,7 +269,8 @@ body {
 .cart-container .order-total p {
   font-size: 0.875rem;
 }
-.cart-container .order-total h4 {
+.cart-container .order-total h4,
+.order-confirmation .order-total h4 {
   font-size: 1.5rem;
 }
 .cart-container .delivery-info {
@@ -278,7 +289,8 @@ body {
 .cart-container .delivery-info p span {
   font-weight: var(--font-semibold);
 }
-.cart-container .confirm-order button {
+.cart-container .confirm-order button,
+.order-confirmation .start-new-order button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -293,6 +305,93 @@ body {
   cursor: pointer;
   transition: all 0.1s linear;
 }
-.cart-container .confirm-order button:hover {
+.cart-container .confirm-order button:hover,
+.order-confirmation .start-new-order button:hover {
   background-color: var(--dark-red);
+}
+
+.order-confirmation-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: hsla(0, 0%, 0%, 50%);
+  font-size: 0.875rem;
+}
+.order-confirmation {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--rose50);
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+.order-confirmation .icon {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+.order-confirmation .icon img {
+  height: 2rem;
+  aspect-ratio: 1 / 1;
+}
+.order-confirmation h2 {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+.order-confirmation .header-desc {
+  color: var(--rose500);
+  margin-bottom: 1.25rem;
+}
+.order-confirmation .order-info {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 1rem;
+  background-color: var(--rose100);
+  margin-bottom: 1.25rem;
+  border-radius: 0.5rem;
+}
+.order-info .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--rose200);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.order-info .item:first-of-type {
+  padding-top: 0;
+}
+.order-info .item .info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 9rem;
+}
+.order-info .details-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.order-info .details-container img {
+  height: 2.75rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.2rem;
+}
+.order-info .details-container .details .desc .price {
+  color: var(--rose500);
+}
+.order-info .item .item-total-price {
+  font-weight: var(--font-semibold);
+}
+.order-confirmation .order-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
 }
