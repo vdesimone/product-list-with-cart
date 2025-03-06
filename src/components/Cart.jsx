@@ -4,7 +4,7 @@ import emptyCartImage from "../assets/images/illustration-empty-cart.svg";
 import iconRemoveItem from "../assets/images/icon-remove-item.svg";
 import iconCarbonNeutral from "../assets/images/icon-carbon-neutral.svg"
 
-function Cart({ cartItems, updateItemQuantity }) {
+function Cart({ cartItems, updateItemQuantity, updateOrderConfirmation }) {
 
   const allQuantityZero = cartItems.every((item) => item.quantity === 0);
   const [cartEmpty, setCartEmpty] = useState(allQuantityZero);
@@ -39,7 +39,7 @@ function Cart({ cartItems, updateItemQuantity }) {
               return (
                 <li key={item.index} className="item">
                   <div className="item-info">
-                    <h3 className="item-name">{item.name}</h3>
+                    <h3>{item.name}</h3>
                     <div className="item-details">
                       <p className="item-quantity">{item.quantity}x</p>
                       <p className="item-price">@ ${item.price.toFixed(2)}</p>
@@ -67,7 +67,7 @@ function Cart({ cartItems, updateItemQuantity }) {
             <p>This is a <span>carbon-neutral</span> delivery</p>
           </div>
           <div className="confirm-order">
-            <button>Confirm Order</button>
+            <button onClick={() => updateOrderConfirmation()}>Confirm Order</button>
           </div>
         </>
       )}
@@ -78,6 +78,7 @@ function Cart({ cartItems, updateItemQuantity }) {
 Cart.propTypes = {
   cartItems: PropTypes.array.isRequired,
   updateItemQuantity: PropTypes.func.isRequired,
+  updateOrderConfirmation: PropTypes.func.isRequired,
 }
 
 export default Cart;
