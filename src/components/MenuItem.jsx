@@ -32,7 +32,7 @@ function MenuItem({ item, updateItemQuantity }) {
 
   return (
     <div className="item">
-      <img className="menu-img" loading="lazy" src={item.image.desktop} alt={item.name} />
+      <img className={`menu-img ${item.quantity === 0 ? "" : "selected"}`} loading="lazy" src={item.image.desktop} alt={item.name} />
       {item.quantity === 0 ? (
         <button className="initial-btn" onClick={handleAddToCart}>
           <img src={iconAddToCart} alt="Add to Cart Icon" />
