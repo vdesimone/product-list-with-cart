@@ -2,9 +2,11 @@ import { useState } from "react";
 import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import initialData from "./data.json";
+import OrderConfirmation from "./components/OrderConfirmation";
 
 function App() {
   const [cartItems, setCartItems] = useState(initialData);
+  const [orderConfirmation, setOrderConfirmation] = useState(false);
 
   const updateItemQuantity = (index, newQuantity) => {
     const updatedItems = cartItems.map((item) => {
@@ -21,6 +23,13 @@ function App() {
     setCartItems(updatedItems);
   };
 
+  const updateOrderConfirmation = () => {
+    if (orderConfirmation) {
+      setCartItems(initialData);
+    }
+    setOrderConfirmation(prev => !prev);
+  };
+
   return (
     <div className="app-container">
       <Menu
@@ -30,7 +39,9 @@ function App() {
       <Cart
         cartItems={cartItems}
         updateItemQuantity={updateItemQuantity}
+        updateOrderConfirmation={updateOrderConfirmation}
       />
+      {orderConfirmation ? <OrderConfirmation cartItems={cartItems} updateOrderConfirmation={updateOrderConfirmation}/> : ""}
     </div>
   );
 }
