@@ -328,6 +328,10 @@ body {
   background-color: var(--rose50);
   padding: 2rem;
   border-radius: 0.5rem;
+  max-height: 100%;
+  min-height: 25.1875rem;
+  height: fit-content;
+  overflow-y: auto;
 }
 .order-confirmation .icon {
   display: flex;
@@ -345,14 +349,18 @@ body {
   color: var(--rose500);
   margin-bottom: 1.25rem;
 }
-.order-confirmation .order-info {
+.order-confirmation .order-info-container {
   display: flex;
   flex-direction: column;
-  list-style-type: none;
   padding: 1rem;
   background-color: var(--rose100);
   margin-bottom: 1.25rem;
   border-radius: 0.5rem;
+}
+.order-confirmation .order-info-container .order-info {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
 }
 .order-info .item {
   display: flex;
